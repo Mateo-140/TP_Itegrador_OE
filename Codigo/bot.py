@@ -4,7 +4,7 @@ def inicializar_bd():
     conn = sqlite3.connect('recursos_humanos.db')
     cursor = conn.cursor()
     
-    # Tabla de Empleados (Corregida: se quitó el NOT EXISTS erróneo)
+    # Tabla de Empleados
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS empleados (
             id_telegram INTEGER PRIMARY KEY,
@@ -31,7 +31,6 @@ def inicializar_bd():
         )
     ''')
     
-    # IMPORTANTE: Cambiá el 12345678 por tu ID real de Telegram que te dio el @userinfobot
     cursor.execute("INSERT OR IGNORE INTO empleados VALUES (973763325, 'Mateo Peralta', 14)")
     
     conn.commit()
@@ -58,7 +57,7 @@ def consultar_saldo(id_telegram):
     cursor.execute("SELECT dias_disponibles, nombre FROM empleados WHERE id_telegram = ?", (id_telegram,))
     res = cursor.fetchone()
     conn.close()
-    return res # Retorna tupla (dias, nombre) o None
+    return res # Retorna tupla dias, nombre o None
 
 def registrar_solicitud(id_telegram, dias):
     conn = sqlite3.connect('recursos_humanos.db')
