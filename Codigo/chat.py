@@ -7,7 +7,7 @@ import bot
 # Configuración de logs
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-TOKEN = "8996168474:AAHx7ahDyNt96c2Qx6TfVkCFEs8wWQIeT-A"
+#TOKEN = 
 ID_JEFE = 973763325  
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
