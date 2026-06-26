@@ -1,5 +1,7 @@
+import os
 import logging
 import sqlite3
+from dotenv import load_dotenv
 from telegram import Update 
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 import bot
@@ -7,8 +9,10 @@ import bot
 # Configuración de logs
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
-#TOKEN = 
-ID_JEFE = 973763325  
+load_dotenv()
+
+TOKEN = os.getenv("TELEGRAM_TOKEN")
+ID_JEFE = int(os.getenv("ID_JEFE")) 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     id_usuario = update.message.chat_id
